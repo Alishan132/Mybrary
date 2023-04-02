@@ -5,7 +5,7 @@ const expressLayouts = require("express-ejs-layouts")
 
 const indexRouter = require("./routes/index")
 const authorsRouter = require("./routes/authors")
-
+const bookRouter = require("./routes/books")
 
 const mongoose = require("mongoose")
 mongoose.connect(process.env.DATABASE_URL).then(() => console.log("connected to mongoose"))
@@ -18,7 +18,7 @@ app.use(express.urlencoded({extended: false}))
 
 app.use("/", indexRouter)
 app.use("/authors", authorsRouter)
-
+app.use("/books", bookRouter)
 
 
 app.listen(3000, () => console.log("listening on 3000"))
