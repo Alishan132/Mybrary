@@ -1,6 +1,7 @@
 const express = require("express")
 const app = express()
 const dotenv = require("dotenv").config()
+const methodOverride = require("method-override")
 const expressLayouts = require("express-ejs-layouts")
 
 const indexRouter = require("./routes/index")
@@ -15,6 +16,7 @@ app.set("layout", "layouts/layout")
 app.use(expressLayouts)
 app.use(express.static("public"))
 app.use(express.urlencoded({extended: false}))
+app.use(methodOverride("_method"))
 
 app.use("/", indexRouter)
 app.use("/authors", authorsRouter)
